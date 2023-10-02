@@ -7,6 +7,8 @@ for(var i=0; i<numberOfDrumButtons; i++){
         
         var buttonInnerHTML = this.innerHTML;       
         makesound(buttonInnerHTML);
+
+        buttonAnimation(buttonInnerHTML);
          
     });
 }
@@ -14,6 +16,8 @@ for(var i=0; i<numberOfDrumButtons; i++){
 document.addEventListener("keydown", function (event){
         
     makesound(event.key);
+
+    buttonAnimation(event.key);
 
 });
 
@@ -58,4 +62,15 @@ function makesound(key){
         default:
             alert("ERROR");
     }
+}
+
+function buttonAnimation(cuurentKey){
+
+    var activeButton = document.querySelector("."+cuurentKey)
+    
+    activeButton.classList.add("pressed");
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },100);
 }
